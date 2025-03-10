@@ -72,7 +72,7 @@ class GADSurvey : BaseActivity() {
 
                     if (responseBody.trim() == "GAD Responses added successfully") {
                         showToast("Successfully submitted")
-                        showGADResultPopup(this@GADSurvey, responses)
+                        passResponsesForResult(responses)
                     } else {
                         showToast("Error in submitting")
                     }
@@ -103,39 +103,12 @@ class GADSurvey : BaseActivity() {
 
     }
 
-    fun calculateGADScore(responses: Map<String, String>): Int {
-        val scoreMap = mapOf(
-            "Not at all" to 0,
-            "Several days" to 1,
-            "More than half of days" to 2,
-            "Nearly every day" to 3
-        )
-
-        return responses.values.sumOf { scoreMap[it] ?: 0 }
-    }
-
-    fun showGADResultPopup(context: Context, responses: Map<String, String>) {
-        val totalScore = calculateGADScore(responses)
-
-        // Interpret the score based on clinical guidelines
-        val severity = when {
-            totalScore in 0..4 -> "Minimal Anxiety"
-            totalScore in 5..9 -> "Mild Anxiety"
-            totalScore in 10..14 -> "Moderate Anxiety"
-            totalScore >= 15 -> "Severe Anxiety"
-            else -> "Invalid Score"
-        }
-
-        AlertDialog.Builder(context)
-            .setTitle("Your GAD Assessment Result")
-            .setMessage("Total Score: $totalScore\nSeverity Level: $severity")
-            .setPositiveButton("OK") { dialog, _ ->
-                dialog.dismiss()
-                deleteToken()
-                startActivity(Intent(context, LoginActivity::class.java))
-                finish()
-            }
-            .show()
+    private fun passResponsesForResult(responses: MutableMap<String, String>) {
+        val intent = Intent(this, GADResult::class.java)
+        intent.putExtra("responsesMap", HashMap(responses))
+        startActivity(intent)
+        deleteToken()
+        finish()
     }
 
 
@@ -193,7 +166,6 @@ class GADSurvey : BaseActivity() {
         val editor = sharedPreferences.edit()
         editor.remove(Constants.AUTH_TOKEN)
         editor.apply()
-
     }
 
     override fun onDestroy() {

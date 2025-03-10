@@ -62,7 +62,7 @@
                 <AutoCompleteTextView
                     android:id="@+id/et_gender"
                     android:layout_width="match_parent"
-                    android:hint="Male"
+                    android:hint=""
                     android:textColor="@drawable/textfield_text_color"
                     android:textColorHint="@android:color/darker_gray"
                     android:layout_height="wrap_content"
@@ -100,7 +100,7 @@
                     android:id="@+id/et_age"
                     android:layout_width="match_parent"
                     android:inputType="number"
-                    android:hint="22 years"
+                    android:hint=""
                     android:textColor="@drawable/textfield_text_color"
                     android:textColorHint="@android:color/darker_gray"
                     android:layout_height="wrap_content"/>
@@ -136,7 +136,7 @@
                 <AutoCompleteTextView
                     android:id="@+id/et_maritalStatus"
                     android:layout_width="match_parent"
-                    android:hint="Single"
+                    android:hint=""
                     android:textColor="@drawable/textfield_text_color"
                     android:textColorHint="@android:color/darker_gray"
                     android:layout_height="wrap_content"
@@ -173,7 +173,7 @@
                     android:id="@+id/et_duringLockdownStayingAt"
                     android:layout_width="match_parent"
                     android:inputType="text"
-                    android:hint="Jodhpur"
+                    android:hint=""
                     android:textColor="@drawable/textfield_text_color"
                     android:textColorHint="@android:color/darker_gray"
                     android:layout_height="wrap_content"/>
@@ -210,7 +210,7 @@
                     android:id="@+id/et_state"
                     android:layout_width="match_parent"
                     android:inputType="text"
-                    android:hint="Rajasthan"
+                    android:hint=""
                     android:textColor="@drawable/textfield_text_color"
                     android:textColorHint="@android:color/darker_gray"
                     android:layout_height="wrap_content"/>
@@ -247,7 +247,7 @@
                 <AutoCompleteTextView
                     android:id="@+id/et_education"
                     android:layout_width="match_parent"
-                    android:hint="Bachelor's Degree"
+                    android:hint=""
                     android:textColor="@drawable/textfield_text_color"
                     android:textColorHint="@android:color/darker_gray"
                     android:layout_height="wrap_content"
@@ -286,7 +286,7 @@
                     android:layout_width="match_parent"
                     android:inputType="text"
                     android:textColor="@drawable/textfield_text_color"
-                    android:hint="Software Developer"
+                    android:hint=""
                     android:textColorHint="@android:color/darker_gray"
                     android:layout_height="wrap_content"/>
 
@@ -322,7 +322,7 @@
                 <AutoCompleteTextView
                     android:id="@+id/et_jobNature"
                     android:layout_width="match_parent"
-                    android:hint="Work From Home"
+                    android:hint=""
                     android:textColor="@drawable/textfield_text_color"
                     android:textColorHint="@android:color/darker_gray"
                     android:layout_height="wrap_content"
@@ -359,7 +359,7 @@
                 <AutoCompleteTextView
                     android:id="@+id/et_jobStatusDuringLockdown"
                     android:layout_width="match_parent"
-                    android:hint="Work From Home"
+                    android:hint=""
                     android:textColor="@drawable/textfield_text_color"
                     android:textColorHint="@android:color/darker_gray"
                     android:layout_height="wrap_content"
@@ -398,7 +398,7 @@
                     android:id="@+id/et_monthlyIncome"
                     android:layout_width="match_parent"
                     android:inputType="number"
-                    android:hint="500000"
+                    android:hint=""
                     android:textColor="@drawable/textfield_text_color"
                     android:textColorHint="@android:color/darker_gray"
                     android:layout_height="wrap_content"/>
@@ -435,7 +435,7 @@
                 <AutoCompleteTextView
                     android:id="@+id/et_knowCovidInfected"
                     android:layout_width="match_parent"
-                    android:hint="No"
+                    android:hint=""
                     android:textColor="@drawable/textfield_text_color"
                     android:textColorHint="@android:color/darker_gray"
                     android:layout_height="wrap_content"
@@ -472,7 +472,7 @@
                 <AutoCompleteTextView
                     android:id="@+id/et_covidInfected"
                     android:layout_width="match_parent"
-                    android:hint="No"
+                    android:hint=""
                     android:textColor="@drawable/textfield_text_color"
                     android:textColorHint="@android:color/darker_gray"
                     android:layout_height="wrap_content"
@@ -510,7 +510,7 @@
                 <AutoCompleteTextView
                     android:id="@+id/et_depressionHistory"
                     android:layout_width="match_parent"
-                    android:hint="No"
+                    android:hint=""
                     android:textColor="@drawable/textfield_text_color"
                     android:textColorHint="@android:color/darker_gray"
                     android:layout_height="wrap_content"
@@ -549,7 +549,7 @@
                 <AutoCompleteTextView
                     android:id="@+id/et_longIllness"
                     android:layout_width="match_parent"
-                    android:hint="No"
+                    android:hint=""
                     android:textColor="@drawable/textfield_text_color"
                     android:textColorHint="@android:color/darker_gray"
                     android:layout_height="wrap_content"
@@ -586,7 +586,7 @@
                 <AutoCompleteTextView
                     android:id="@+id/et_practiceYoga"
                     android:layout_width="match_parent"
-                    android:hint="Yes"
+                    android:hint=""
                     android:textColor="@drawable/textfield_text_color"
                     android:textColorHint="@android:color/darker_gray"
                     android:layout_height="wrap_content"

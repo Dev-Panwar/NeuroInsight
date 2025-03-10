@@ -78,6 +78,7 @@
                             android:id="@+id/et_username_signIn"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:visibility="gone"
                             android:hint="Enter username"
                             android:inputType="textEmailAddress|text"
                             android:textSize="18sp" />
@@ -88,6 +89,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:gravity="center"
+                        android:visibility="gone"
                         android:layout_marginHorizontal="20dp"
                         android:layout_marginVertical="10dp"
                         >
@@ -152,12 +154,28 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_margin="25dp"
+                        android:layout_marginHorizontal="25dp"
+                        android:layout_marginTop="25dp"
                         android:background="@drawable/shape_button_rounded"
                         android:foreground="?attr/selectableItemBackground"
                         android:gravity="center"
                         android:paddingVertical="15dp"
                         android:text="Login"
+                        android:textColor="@android:color/white"
+                        android:textSize="20sp" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btn_guest_login_in"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginHorizontal="25dp"
+                        android:background="@drawable/shape_button_rounded"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:gravity="center"
+                        android:layout_marginTop="15dp"
+                        android:paddingVertical="15dp"
+                        android:text="Login As Guest"
                         android:textColor="@android:color/white"
                         android:textSize="20sp" />
 
@@ -168,7 +186,7 @@
                         android:layout_height="wrap_content"
                         android:text="Not a member yet? Register here."
                         android:layout_gravity="end"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="25dp"
                         android:layout_marginEnd="15dp"
                         android:textColor="@color/secondary_text_color"
                         android:textStyle="bold"

@@ -8,8 +8,10 @@ import android.widget.Toast
 import dev.panwar.neuroinsight.R
 import dev.panwar.neuroinsight.api.RetrofitInstance
 import dev.panwar.neuroinsight.databinding.ActivityLoginBinding
+import dev.panwar.neuroinsight.models.request.SignupRequest
 import dev.panwar.neuroinsight.models.request.UsernameLogin
 import dev.panwar.neuroinsight.models.response.LoginResponse
+import dev.panwar.neuroinsight.models.response.User
 import dev.panwar.neuroinsight.utils.Constants
 import org.json.JSONObject
 import retrofit2.Call
@@ -29,6 +31,10 @@ class LoginActivity : BaseActivity() {
 
         binding?.tvRegister?.setOnClickListener {
             startActivity(Intent(this,SignUpActivity::class.java))
+        }
+
+        binding?.btnGuestLoginIn?.setOnClickListener {
+            setupGuestLogin()
         }
 
         val sharedPreferences=getSharedPreferences(Constants.TOKEN_PREFERENCES,Context.MODE_PRIVATE)
@@ -57,6 +63,50 @@ class LoginActivity : BaseActivity() {
                 return@setOnClickListener
             }
 
+        }
+
+    }
+
+    private fun setupGuestLogin() {
+        val sharedPreferences=getSharedPreferences(Constants.USER_PREFERENCES,Context.MODE_PRIVATE)
+        val guestStoredUsername=sharedPreferences.getString(Constants.GUEST_USERNAME,"")
+        if (guestStoredUsername!=null){
+            if (guestStoredUsername.isNotEmpty()){
+                showToast("Logging in as $guestStoredUsername")
+                loginUser(UsernameLogin(userName = guestStoredUsername,password = "1wq20op9",email = null))
+            }else{
+                val guestUsername="Guest"+(1000..9999).random()
+                val guestEmail = guestUsername+"@neuroinsight.com"
+                saveGuestUsername(guestUsername)
+                val signUpRequest= SignupRequest(fullName = guestUsername,userName = guestUsername,email = guestEmail,password = "1wq20op9")
+                showProgressDialog("Registering Guest. Please wait!")
+                val call: Call<User> = RetrofitInstance.api.signup(signupRequest = signUpRequest)
+                call.enqueue(object : Callback<User> {
+                    override fun onResponse(call: Call<User>, response: Response<User>) {
+                        hideProgressDialogue()
+                        if (response.isSuccessful) {
+                            val registrationResponse = response.body()
+                            Log.e("Guest SignUp Response",response.body().toString())
+                            setupGuestLogin()
+                        } else {
+                            val errorBody = response.errorBody()?.string()
+                            try {
+                                val jsonObject = JSONObject(errorBody)
+                                val errorMessage = jsonObject.getString("message")
+                                Toast.makeText(this@LoginActivity, errorMessage, Toast.LENGTH_LONG).show()
+                            } catch (e: Exception) {
+
+                                Toast.makeText(this@LoginActivity, errorBody, Toast.LENGTH_LONG).show()
+                            }
+                        }
+                    }
+
+                    override fun onFailure(call: Call<User>, t: Throwable) {
+                        hideProgressDialogue()
+                        Toast.makeText(this@LoginActivity, "Request failed: ${t.message}", Toast.LENGTH_SHORT).show()
+                    }
+                })
+            }
         }
 
     }
@@ -123,6 +173,14 @@ class LoginActivity : BaseActivity() {
             onBackPressed()
         }
     }
+
+    private fun saveGuestUsername(token: String?) {
+        val sharedPreferences = getSharedPreferences(Constants.USER_PREFERENCES, Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putString(Constants.GUEST_USERNAME, token)
+        editor.apply()
+    }
+
 
     private fun saveAuthToken(token: String?) {
         // Store the authentication token securely, e.g., using SharedPreferences

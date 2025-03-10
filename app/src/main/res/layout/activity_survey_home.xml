@@ -62,6 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
+            android:visibility="gone"
             android:textSize="20sp"
             android:layout_marginTop="40dp"
             android:text="@string/phq_patient_health_questionnaire_a_self_assessment_tool_for_screening_depression_and_anxiety_severity"/>
@@ -70,6 +71,7 @@
             android:id="@+id/btnFHQSurvey"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             android:background="@drawable/shape_button_rounded"
             android:layout_marginHorizontal="50dp"
             android:layout_marginVertical="20dp"
