@@ -1,0 +1,5 @@
+<!-- res/drawable/textinput_unfocused_background.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/secondary_text_color"/>
+    <corners android:radius="12dp"/>
+</shape>

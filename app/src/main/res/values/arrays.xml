@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Gender Options -->
+    <string-array name="gender_options">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Other</item>
+    </string-array>
+
+    <!-- Marital Status Options -->
+    <string-array name="marital_status_options">
+        <item>Single</item>
+        <item>Married</item>
+        <item>Divorced</item>
+        <item>Widowed</item>
+    </string-array>
+
+    <string-array name="education_options">
+        <item>Bachelor\'s Degree</item>
+        <item>Master\'s Degree</item>
+        <item>Secondary Education</item>
+        <item>Higher Secondary Education</item>
+        <item>Illiterate</item>
+    </string-array>
+
+    <!-- Job Nature Options -->
+    <string-array name="job_nature_options">
+        <item>Full-Time</item>
+        <item>Part-Time</item>
+        <item>Freelancer</item>
+        <item>Internship</item>
+        <item>Self-Employed</item>
+        <item>Unemployed</item>
+    </string-array>
+
+    <!-- Job Status During Lockdown Options -->
+    <string-array name="job_status_options">
+        <item>Working from Home</item>
+        <item>Temporarily Laid Off</item>
+        <item>Lost Job</item>
+        <item>No Change</item>
+        <item>Other</item>
+    </string-array>
+
+    <!-- Yes/No Options -->
+    <string-array name="yes_no_options">
+        <item>Yes</item>
+        <item>No</item>
+    </string-array>
+</resources>
+
+

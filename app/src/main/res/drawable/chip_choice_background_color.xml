@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--    if chip is selected i.e. checked -->
+    <item android:color="@color/colorPrimary" android:state_checked="true"/>
+    <!--    if chip is not selected i.e. not checked -->
+    <item android:color="@color/edit_text_color"/>
+</selector>
