@@ -3,6 +3,7 @@ package dev.panwar.neuroinsight.activities
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -21,6 +22,7 @@ class GADResult : AppCompatActivity() {
 
         val responses: HashMap<String, String>? = intent.getSerializableExtra("responsesMap") as? HashMap<String, String>
         if (responses != null) {
+            Log.e("responseMap", responses.toString())
             showGADResultPopup(this, responses)
         }
 
@@ -38,10 +40,10 @@ class GADResult : AppCompatActivity() {
 
     fun calculateGADScore(responses: Map<String, String>): Int {
         val scoreMap = mapOf(
-            "Not at all" to 0,
-            "Several days" to 1,
-            "More than half of days" to 2,
-            "Nearly every day" to 3
+            "Not at all".lowercase() to 0,
+            "Several days".lowercase() to 1,
+            "More than half of days".lowercase() to 2,
+            "Nearly everyday".lowercase() to 3
         )
 
         return responses.values.sumOf { scoreMap[it] ?: 0 }
@@ -52,10 +54,10 @@ class GADResult : AppCompatActivity() {
 
         // Interpret the score based on clinical guidelines
         val severity = when {
-            totalScore in 0..4 -> "Minimal Anxiety"
-            totalScore in 5..9 -> "Mild Anxiety"
-            totalScore in 10..14 -> "Moderate Anxiety"
-            totalScore >= 15 -> "Severe Anxiety"
+            totalScore in 0..4 -> "Minimal Anxiety \n Your are fine 😊"
+            totalScore in 5..9 -> "Mild Anxiety \n Need to take care 😕"
+            totalScore in 10..14 -> "Moderate Anxiety \n Need to take care ☹️"
+            totalScore >= 15 -> "Severe Anxiety \n Consult a doctor 👨‍⚕️"
             else -> "Invalid Score"
         }
 

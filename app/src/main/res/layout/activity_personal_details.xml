@@ -94,6 +94,7 @@
                 app:boxStrokeColor="@android:color/transparent"
                 app:boxStrokeWidth="0dp"
                 app:hintEnabled="false"
+                app:boxBackgroundMode="none"
                 android:background="@drawable/textinput_background_selector">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -167,6 +168,7 @@
                 app:boxStrokeColor="@android:color/transparent"
                 app:boxStrokeWidth="0dp"
                 app:hintEnabled="false"
+                app:boxBackgroundMode="none"
                 android:background="@drawable/textinput_background_selector">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -204,6 +206,7 @@
                 app:boxStrokeColor="@android:color/transparent"
                 app:boxStrokeWidth="0dp"
                 app:hintEnabled="false"
+                app:boxBackgroundMode="none"
                 android:background="@drawable/textinput_background_selector">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -279,6 +282,7 @@
                 app:boxStrokeColor="@android:color/transparent"
                 app:boxStrokeWidth="0dp"
                 app:hintEnabled="false"
+                app:boxBackgroundMode="none"
                 android:background="@drawable/textinput_background_selector">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -392,6 +396,7 @@
                 app:boxStrokeColor="@android:color/transparent"
                 app:boxStrokeWidth="0dp"
                 app:hintEnabled="false"
+                app:boxBackgroundMode="none"
                 android:background="@drawable/textinput_background_selector">
 
                 <com.google.android.material.textfield.TextInputEditText

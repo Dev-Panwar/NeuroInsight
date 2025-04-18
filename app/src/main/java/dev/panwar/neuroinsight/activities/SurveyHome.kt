@@ -34,7 +34,7 @@ class SurveyHome : AppCompatActivity() {
             finish()
         }
 
-        binding?.btnGADSurvey?.callOnClick()
+//        binding?.btnGADSurvey?.callOnClick()
 
 
     }

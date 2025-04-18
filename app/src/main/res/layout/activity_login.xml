@@ -25,11 +25,56 @@
 
     </androidx.appcompat.widget.Toolbar>
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_guest_login_in"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="25dp"
+        android:background="@drawable/shape_button_rounded"
+        android:foreground="?attr/selectableItemBackground"
+        android:gravity="center"
+        android:layout_marginTop="25dp"
+        android:paddingVertical="15dp"
+        android:text="Login As Guest"
+        android:textColor="@android:color/white"
+        android:textSize="20sp" />
+
+    <LinearLayout
+        android:id="@+id/ll_or_divider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        >
+
+        <View
+            android:layout_width="120dp"
+            android:layout_height="1dp"
+            android:layout_gravity="center_vertical"
+            android:background="@color/secondary_text_color"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="or"
+            android:textSize="18sp"
+            android:layout_marginHorizontal="5dp"
+            android:textColor="@color/secondary_text_color" />
+
+        <View
+            android:layout_width="120dp"
+            android:layout_height="1dp"
+            android:layout_gravity="center_vertical"
+            android:background="@color/secondary_text_color"/>
+
+    </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="30dp"
         android:orientation="vertical">
 
         <TextView
@@ -161,21 +206,6 @@
                         android:gravity="center"
                         android:paddingVertical="15dp"
                         android:text="Login"
-                        android:textColor="@android:color/white"
-                        android:textSize="20sp" />
-
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/btn_guest_login_in"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginHorizontal="25dp"
-                        android:background="@drawable/shape_button_rounded"
-                        android:foreground="?attr/selectableItemBackground"
-                        android:gravity="center"
-                        android:layout_marginTop="15dp"
-                        android:paddingVertical="15dp"
-                        android:text="Login As Guest"
                         android:textColor="@android:color/white"
                         android:textSize="20sp" />
 

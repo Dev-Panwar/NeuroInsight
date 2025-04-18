@@ -37,14 +37,31 @@ class SurveyAdapter(
         holder.chipOption3.text = item.options[2]
         holder.chipOption4.text = item.options[3]
 
+        // Remove the previous listener by setting it to null
+        holder.chipGroup.setOnCheckedChangeListener(null)
+
+        // Clear all chip selections first
+        holder.chipGroup.clearCheck()
+
+        // Check if this question already has a response and restore it
+        val existingResponse = responses[item.question.trim()]
+        if (existingResponse != null) {
+            when (existingResponse) {
+                holder.chipOption1.text.toString() -> holder.chipOption1.isChecked = true
+                holder.chipOption2.text.toString() -> holder.chipOption2.isChecked = true
+                holder.chipOption3.text.toString() -> holder.chipOption3.isChecked = true
+                holder.chipOption4.text.toString() -> holder.chipOption4.isChecked = true
+            }
+        }
+
         // Set chip selection listener
         holder.chipGroup.setOnCheckedChangeListener { group, checkedId ->
             if (checkedId != View.NO_ID) {
                 val selectedChip = group.findViewById<Chip>(checkedId)
-                val selectedResponse = selectedChip.text.toString()
-                responses.put(item.question.trim(), selectedResponse) // Add the response to the map
-            }else{
-                responses.remove(item.question.trim()) // Remove the response from the map
+                val selectedResponse = selectedChip.text.toString().lowercase()
+                responses[item.question.trim()] = selectedResponse
+            } else {
+                responses.remove(item.question.trim())
             }
         }
     }
