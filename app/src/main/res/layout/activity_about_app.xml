@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    android:fillViewport="true">
+
+    <!-- Main container to hold both sections -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- About Section - English -->
+        <LinearLayout
+            android:id="@+id/layout_about_english"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/tv_about_title_english"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:text="About the App"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_about_content_english"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:text="MANODARPAN is a comprehensive mental health assessment and tracking app designed to help users understand and manage their anxiety levels using validated clinical tools. The app uses the GAD-7 (Generalized Anxiety Disorder-7) survey, a clinically validated screening tool for assessing anxiety symptoms and their severity.\n\nOur app provides a secure environment for users to monitor their mental health journey with regular check-ins, insightful progress tracking, and bilingual support in both English and Hindi. MANODARPAN prioritizes your privacy with secure data handling and strict confidentiality practices.\n\nRemember that while MANODARPAN helps you track and understand your anxiety patterns, it is designed for screening and monitoring purposes only and does not replace professional medical advice, diagnosis, or treatment."
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="16dp"
+            android:background="@color/colorDivider" />
+
+        <!-- About Section - Hindi -->
+        <LinearLayout
+            android:id="@+id/layout_about_hindi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/tv_about_title_hindi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:text="ऐप के बारे में"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_about_content_hindi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:text="मनोदर्पण एक व्यापक मानसिक स्वास्थ्य मूल्यांकन और ट्रैकिंग ऐप है जो उपयोगकर्ताओं को मान्य क्लिनिकल टूल्स का उपयोग करके अपने चिंता के स्तर को समझने और प्रबंधित करने में मदद करता है। ऐप सामान्यीकृत चिंता विकार-7 (GAD-7) सर्वेक्षण का उपयोग करता है, जो चिंता के लक्षणों और उनकी गंभीरता का आकलन करने के लिए एक क्लिनिकल रूप से मान्य स्क्रीनिंग टूल है।\n\nहमारा ऐप उपयोगकर्ताओं को नियमित चेक-इन, अंतर्दृष्टिपूर्ण प्रगति ट्रैकिंग और अंग्रेजी और हिंदी दोनों में द्विभाषी समर्थन के साथ अपनी मानसिक स्वास्थ्य यात्रा की निगरानी करने के लिए एक सुरक्षित वातावरण प्रदान करता है। मनोदर्पण सुरक्षित डेटा हैंडलिंग और कड़े गोपनीयता प्रथाओं के साथ आपकी गोपनीयता को प्राथमिकता देता है।\n\nयाद रखें कि जबकि मनोदर्पण आपको अपने चिंता पैटर्न को ट्रैक करने और समझने में मदद करता है, यह केवल स्क्रीनिंग और निगरानी उद्देश्यों के लिए डिज़ाइन किया गया है और पेशेवर चिकित्सा सलाह, निदान या उपचार का विकल्प नहीं है।"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_app_support"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginBottom="30dp"
+            android:text="Contact Support"
+            android:background="@drawable/shape_button_rounded"
+            android:textColor="@color/white"
+            android:textSize="20sp"/>
+    </LinearLayout>
+</ScrollView>

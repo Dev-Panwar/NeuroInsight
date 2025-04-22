@@ -37,6 +37,10 @@ class LoginActivity : BaseActivity() {
             setupGuestLogin()
         }
 
+        binding?.btnAboutApp?.setOnClickListener {
+            startActivity(Intent(this,AboutApp::class.java))
+        }
+
         val sharedPreferences=getSharedPreferences(Constants.TOKEN_PREFERENCES,Context.MODE_PRIVATE)
         val authToken=sharedPreferences.getString(Constants.AUTH_TOKEN,"")
 
@@ -123,6 +127,7 @@ class LoginActivity : BaseActivity() {
                     Log.e("Login Response",response.body().toString())
                     showToast("Login Successful")
                     saveAuthToken(loginResponse?.jwt)
+                    saveEmail(loginResponse?.User?.email)
                     hideProgressDialogue()
                     loginUser()
                     finish()
@@ -178,6 +183,14 @@ class LoginActivity : BaseActivity() {
         val sharedPreferences = getSharedPreferences(Constants.USER_PREFERENCES, Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.putString(Constants.GUEST_USERNAME, token)
+        editor.apply()
+    }
+
+    private fun saveEmail(email: String?) {
+        // Store the authentication token securely, e.g., using SharedPreferences
+        val sharedPreferences = getSharedPreferences(Constants.USER_PREFERENCES, Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putString("email", email)
         editor.apply()
     }
 

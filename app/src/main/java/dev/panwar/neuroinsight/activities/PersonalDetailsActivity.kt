@@ -60,6 +60,11 @@ class PersonalDetailsActivity : BaseActivity() {
         binding?.etLongIllness?.setAdapter(yesNoAdapter)
         binding?.etPracticeYoga?.setAdapter(yesNoAdapter)
 
+        val sharedPreferences=getSharedPreferences(Constants.USER_PREFERENCES, Context.MODE_PRIVATE)
+        val userEmail=sharedPreferences.getString("email","")
+        binding?.tvEmail?.text="User: ${userEmail}"
+
+
         binding?.btnSubmitDetails?.setOnClickListener {
             submitPersonalDetails()
         }

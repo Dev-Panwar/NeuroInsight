@@ -43,8 +43,8 @@ class MainActivity : BaseActivity() {
                     Log.e("GetUserResponse",response.body().toString())
                     val registrationResponse = response.body()
 //                    if(registrationResponse!=null && registrationResponse.size >0){
-                        startActivity(Intent(this@MainActivity,SurveyHome::class.java))
-                        finish()
+//                        startActivity(Intent(this@MainActivity,SurveyHome::class.java))
+//                        finish()
 //                    }else{
                         startActivity(Intent(this@MainActivity,PersonalDetailsActivity::class.java))
                         finish()

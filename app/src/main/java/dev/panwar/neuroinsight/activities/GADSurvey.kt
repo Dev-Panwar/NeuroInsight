@@ -50,6 +50,10 @@ class GADSurvey : BaseActivity() {
                 showToast("All questions are mandatory")
             }
         }
+
+        val sharedPreferences=getSharedPreferences(Constants.USER_PREFERENCES, Context.MODE_PRIVATE)
+        val userEmail=sharedPreferences.getString("email","")
+        binding?.tvEmail?.text="User: ${userEmail}"
     }
 
     private fun submitResponses(responses: MutableMap<String, String>) {

@@ -30,7 +30,7 @@ class SurveyAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = listQuestions[position]
         val questions = separateLanguages(item.question)
-        holder.tvQuestionHindi.text = questions?.first
+        holder.tvQuestionHindi.text = "${position + 1}. ${questions?.first}"
         holder.tvQuestionEnglish.text = questions?.second
         holder.chipOption1.text = item.options[0]
         holder.chipOption2.text = item.options[1]

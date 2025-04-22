@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">Neuro Insight</string>
+    <string name="app_name">MANODARPAN</string>
     <string name="skip"><u>Skip</u></string>
-    <string name="gad_generalized_anxiety_disorder_a_condition_marked_by_excessive_persistent_worry_and_anxiety_about_daily_life"><b><u>1. GAD (Generalized Anxiety Disorder):</u></b> \n A condition marked by excessive, persistent worry and anxiety about daily life.</string>
+    <string name="gad_generalized_anxiety_disorder_a_condition_marked_by_excessive_persistent_worry_and_anxiety_about_daily_life"><b><u>1. GAD-7 (Generalized Anxiety Disorder):</u></b> \n A condition marked by excessive, persistent worry and anxiety about daily life.</string>
     <string name="phq_patient_health_questionnaire_a_self_assessment_tool_for_screening_depression_and_anxiety_severity"><b><u>2. PHQ (Patient Health Questionnaire):</u></b> \nA self-assessment tool for screening depression and anxiety severity.</string>
+    <string name="click_here_to_know_about_app"><u>Click here to know about app.</u></string>
 </resources>

@@ -18,7 +18,7 @@
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="GAD (Generalized Anxiety Disorder) \n\nजी ए डी (सामान्यीकृत चिंता विकार) \n\nSurvey/सर्वेक्षण"
+            android:text="GAD-7 (Generalized Anxiety Disorder) \n\nजी ए डी-7 (सामान्यीकृत चिंता विकार) \n\nSurvey/सर्वेक्षण"
             android:gravity="center"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -26,6 +26,16 @@
             android:textColor="@color/black"
             android:layout_gravity="center"
             android:layout_marginTop="40dp"/>
+
+        <TextView
+            android:id="@+id/tv_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:text="PersonalDetails"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewSurvey"
