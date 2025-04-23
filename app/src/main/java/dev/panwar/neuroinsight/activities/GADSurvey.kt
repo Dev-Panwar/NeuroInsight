@@ -4,21 +4,16 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
-import dev.panwar.neuroinsight.R
+import androidx.recyclerview.widget.RecyclerView
 import dev.panwar.neuroinsight.adapter.SurveyAdapter
 import dev.panwar.neuroinsight.api.RetrofitInstance
 import dev.panwar.neuroinsight.databinding.ActivityGadsurveyBinding
 import dev.panwar.neuroinsight.models.request.QuestionResponses
 import dev.panwar.neuroinsight.models.response.GetGADQuestionsResponse
 import dev.panwar.neuroinsight.models.response.GetGADQuestionsResponseItem
-import dev.panwar.neuroinsight.models.response.PersonalDetailsResponse
 import dev.panwar.neuroinsight.utils.Constants
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -35,6 +30,9 @@ class GADSurvey : BaseActivity() {
         super.onCreate(savedInstanceState)
         binding= ActivityGadsurveyBinding.inflate(layoutInflater)
         setContentView(binding?.root)
+
+        // Initially hide the submit button
+        binding?.btnSubmit?.visibility = View.GONE
 
         setupLayout()
 
@@ -133,10 +131,32 @@ class GADSurvey : BaseActivity() {
                     }
                     if(list!=null && list.size >0){
                         val rv=binding?.recyclerViewSurvey!!
-                        rv.layoutManager= LinearLayoutManager(this@GADSurvey)
+                        val layoutManager = LinearLayoutManager(this@GADSurvey)
+                        rv.layoutManager = layoutManager
                         val adapter= SurveyAdapter(list, responses)
                         rv.adapter=adapter
 
+                        // Add scroll listener to detect when user reaches the end
+                        rv.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                                super.onScrolled(recyclerView, dx, dy)
+
+                                // Get total item count
+                                val totalItemCount = layoutManager.itemCount
+
+                                // Get the last visible item position
+                                val lastVisibleItemPosition = layoutManager.findLastVisibleItemPosition()
+
+                                // Check if the last item is visible
+                                if (lastVisibleItemPosition >= totalItemCount - 1) {
+                                    // Show the button when the last item is visible
+                                    binding?.btnSubmit?.visibility = View.VISIBLE
+                                } else {
+                                    // Hide the button if not at the end
+                                    binding?.btnSubmit?.visibility = View.GONE
+                                }
+                            }
+                        })
                     }
 
                 } else {
@@ -176,7 +196,4 @@ class GADSurvey : BaseActivity() {
         super.onDestroy()
         binding=null
     }
-
-
-
 }
