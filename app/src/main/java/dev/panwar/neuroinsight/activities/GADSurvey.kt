@@ -133,7 +133,7 @@ class GADSurvey : BaseActivity() {
                         val rv=binding?.recyclerViewSurvey!!
                         val layoutManager = LinearLayoutManager(this@GADSurvey)
                         rv.layoutManager = layoutManager
-                        val adapter= SurveyAdapter(list, responses)
+                        val adapter= SurveyAdapter(this@GADSurvey,list, responses)
                         rv.adapter=adapter
 
                         // Add scroll listener to detect when user reaches the end

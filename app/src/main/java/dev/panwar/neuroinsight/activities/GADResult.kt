@@ -40,10 +40,10 @@ class GADResult : AppCompatActivity() {
 
     fun calculateGADScore(responses: Map<String, String>): Int {
         val scoreMap = mapOf(
-            "Not at all".lowercase() to 0,
-            "Several days".lowercase() to 1,
-            "More than half of days".lowercase() to 2,
-            "Nearly everyday".lowercase() to 3
+            "Not at all / बिलकुल नहीं".lowercase() to 0,
+            "Several days / कई दिनों तक".lowercase() to 1,
+            "More than half of days / आधे से अधिक दिनों तक".lowercase() to 2,
+            "Nearly everyday / लगभग हर दिन".lowercase() to 3
         )
 
         return responses.values.sumOf { scoreMap[it] ?: 0 }

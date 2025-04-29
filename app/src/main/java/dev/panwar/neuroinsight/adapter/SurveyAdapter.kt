@@ -1,19 +1,21 @@
 package dev.panwar.neuroinsight.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
-import dev.panwar.neuroinsight.R
+import android.widget.RadioButton
 import android.widget.TextView
-import com.google.android.material.chip.Chip
-import com.google.android.material.chip.ChipGroup
-import dev.panwar.neuroinsight.models.request.QuestionResponses
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.card.MaterialCardView
+import dev.panwar.neuroinsight.R
 import dev.panwar.neuroinsight.models.response.GetGADQuestionsResponseItem
 
 class SurveyAdapter(
+    private val context: Context,
     var listQuestions: List<GetGADQuestionsResponseItem>,
-    var responses: MutableMap<String,String> // Ensure it's mutable
+    var responses: MutableMap<String, String>
 ) : RecyclerView.Adapter<SurveyAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -32,48 +34,122 @@ class SurveyAdapter(
         val questions = separateLanguages(item.question)
         holder.tvQuestionHindi.text = "${position + 1}. ${questions?.first}"
         holder.tvQuestionEnglish.text = questions?.second
-        holder.chipOption1.text = item.options[0]
-        holder.chipOption2.text = item.options[1]
-        holder.chipOption3.text = item.options[2]
-        holder.chipOption4.text = item.options[3]
+        holder.radioOption1.text = item.optionsList[0]
+        holder.radioOption2.text = item.optionsList[1]
+        holder.radioOption3.text = item.optionsList[2]
+        holder.radioOption4.text = item.optionsList[3]
 
-        // Remove the previous listener by setting it to null
-        holder.chipGroup.setOnCheckedChangeListener(null)
+        // Clear all radio button selections first
+        holder.radioOption1.isChecked = false
+        holder.radioOption2.isChecked = false
+        holder.radioOption3.isChecked = false
+        holder.radioOption4.isChecked = false
 
-        // Clear all chip selections first
-        holder.chipGroup.clearCheck()
+        // Reset card backgrounds
+        resetCardBackgrounds(holder)
 
         // Check if this question already has a response and restore it
         val existingResponse = responses[item.question.trim()]
         if (existingResponse != null) {
-            when (existingResponse) {
-                holder.chipOption1.text.toString() -> holder.chipOption1.isChecked = true
-                holder.chipOption2.text.toString() -> holder.chipOption2.isChecked = true
-                holder.chipOption3.text.toString() -> holder.chipOption3.isChecked = true
-                holder.chipOption4.text.toString() -> holder.chipOption4.isChecked = true
+            when (existingResponse.lowercase()) {
+                holder.radioOption1.text.toString().lowercase() -> {
+                    holder.radioOption1.isChecked = true
+                    updateCardBackground(holder.cardOption1, true)
+                }
+                holder.radioOption2.text.toString().lowercase() -> {
+                    holder.radioOption2.isChecked = true
+                    updateCardBackground(holder.cardOption2, true)
+                }
+                holder.radioOption3.text.toString().lowercase() -> {
+                    holder.radioOption3.isChecked = true
+                    updateCardBackground(holder.cardOption3, true)
+                }
+                holder.radioOption4.text.toString().lowercase() -> {
+                    holder.radioOption4.isChecked = true
+                    updateCardBackground(holder.cardOption4, true)
+                }
             }
         }
 
-        // Set chip selection listener
-        holder.chipGroup.setOnCheckedChangeListener { group, checkedId ->
-            if (checkedId != View.NO_ID) {
-                val selectedChip = group.findViewById<Chip>(checkedId)
-                val selectedResponse = selectedChip.text.toString().lowercase()
-                responses[item.question.trim()] = selectedResponse
-            } else {
-                responses.remove(item.question.trim())
+        setupRadioButtonClickListeners(holder, item)
+    }
+
+    private fun setupRadioButtonClickListeners(holder: ViewHolder, item: GetGADQuestionsResponseItem) {
+        val radioOptions = listOf(
+            holder.radioOption1,
+            holder.radioOption2,
+            holder.radioOption3,
+            holder.radioOption4
+        )
+
+        val cardOptions = listOf(
+            holder.cardOption1,
+            holder.cardOption2,
+            holder.cardOption3,
+            holder.cardOption4
+        )
+
+        radioOptions.forEachIndexed { index, radioButton ->
+            radioButton.setOnCheckedChangeListener { _, isChecked ->
+                if (isChecked) {
+                    // Update card appearance
+                    updateCardBackground(cardOptions[index], true)
+
+                    // Save the response
+                    responses[item.question.trim()] = radioButton.text.toString().lowercase()
+
+                    // Deselect other options
+                    radioOptions.forEachIndexed { otherIndex, otherButton ->
+                        if (otherIndex != index && otherButton.isChecked) {
+                            otherButton.isChecked = false
+                            updateCardBackground(cardOptions[otherIndex], false)
+                        }
+                    }
+                }
             }
+        }
+    }
+
+    private fun updateCardBackground(cardView: MaterialCardView, isSelected: Boolean) {
+        if (isSelected) {
+            cardView.setCardBackgroundColor(
+                ContextCompat.getColor(context, R.color.colorPrimary)
+            )
+            cardView.strokeColor = ContextCompat.getColor(context, R.color.secondary_text_color)
+        } else {
+            cardView.setCardBackgroundColor(
+                ContextCompat.getColor(context, R.color.white)
+            )
+            cardView.strokeColor = ContextCompat.getColor(context, R.color.secondary_text_color)
+        }
+    }
+
+    private fun resetCardBackgrounds(holder: ViewHolder) {
+        val cardOptions = listOf(
+            holder.cardOption1,
+            holder.cardOption2,
+            holder.cardOption3,
+            holder.cardOption4
+        )
+
+        cardOptions.forEach { cardView ->
+            updateCardBackground(cardView, false)
         }
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val tvQuestionHindi: TextView = itemView.findViewById(R.id.tv_question_hindi)
         val tvQuestionEnglish: TextView = itemView.findViewById(R.id.tv_question_english)
-        val chipGroup: ChipGroup = itemView.findViewById(R.id.chipGroup)
-        val chipOption1: Chip = itemView.findViewById(R.id.chip_option13)
-        val chipOption2: Chip = itemView.findViewById(R.id.chip_option2)
-        val chipOption3: Chip = itemView.findViewById(R.id.chip_option3)
-        val chipOption4: Chip = itemView.findViewById(R.id.chip_option4)
+
+        val cardOption1: MaterialCardView = itemView.findViewById(R.id.card_option1)
+        val cardOption2: MaterialCardView = itemView.findViewById(R.id.card_option2)
+        val cardOption3: MaterialCardView = itemView.findViewById(R.id.card_option3)
+        val cardOption4: MaterialCardView = itemView.findViewById(R.id.card_option4)
+
+        val radioOption1: RadioButton = itemView.findViewById(R.id.radio_option1)
+        val radioOption2: RadioButton = itemView.findViewById(R.id.radio_option2)
+        val radioOption3: RadioButton = itemView.findViewById(R.id.radio_option3)
+        val radioOption4: RadioButton = itemView.findViewById(R.id.radio_option4)
     }
 
     fun separateLanguages(input: String): Pair<String, String>? {

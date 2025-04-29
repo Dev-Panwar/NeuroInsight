@@ -2,52 +2,51 @@
 <resources>
     <!-- Gender Options -->
     <string-array name="gender_options">
-        <item>Male</item>
-        <item>Female</item>
-        <item>Other</item>
+        <item>पुरुष / Male</item>
+        <item>महिला / Female</item>
+        <item>अन्य / Other</item>
     </string-array>
 
     <!-- Marital Status Options -->
     <string-array name="marital_status_options">
-        <item>Single</item>
-        <item>Married</item>
-        <item>Divorced</item>
-        <item>Widowed</item>
+        <item>अविवाहित / Single</item>
+        <item>विवाहित / Married</item>
+        <item>तलाकशुदा / Divorced</item>
+        <item>विधवा / Widowed</item>
     </string-array>
 
+    <!-- Education Options -->
     <string-array name="education_options">
-        <item>Bachelor\'s Degree</item>
-        <item>Master\'s Degree</item>
-        <item>Secondary Education</item>
-        <item>Higher Secondary Education</item>
-        <item>Illiterate</item>
+        <item>स्नातक डिग्री / Bachelor\'s Degree</item>
+        <item>स्नातकोत्तर डिग्री / Master\'s Degree</item>
+        <item>माध्यमिक शिक्षा / Secondary Education</item>
+        <item>उच्च माध्यमिक शिक्षा / Higher Secondary Education</item>
+        <item>अशिक्षित / Illiterate</item>
     </string-array>
 
     <!-- Job Nature Options -->
     <string-array name="job_nature_options">
-        <item>Full-Time</item>
-        <item>Part-Time</item>
-        <item>Freelancer</item>
-        <item>Internship</item>
-        <item>Self-Employed</item>
-        <item>Government Employee</item>
-        <item>Unemployed</item>
+        <item>पूर्णकालिक / Full-Time</item>
+        <item>अंशकालिक / Part-Time</item>
+        <item>फ्रीलांसर / Freelancer</item>
+        <item>इंटर्नशिप / Internship</item>
+        <item>स्व-नियोजित / Self-Employed</item>
+        <item>सरकारी कर्मचारी / Government Employee</item>
+        <item>बेरोजगार / Unemployed</item>
     </string-array>
 
     <!-- Job Status During Lockdown Options -->
     <string-array name="job_status_options">
-        <item>Working from Home</item>
-        <item>Temporarily Laid Off</item>
-        <item>Lost Job</item>
-        <item>No Change</item>
-        <item>Other</item>
+        <item>घर से काम / Working from Home</item>
+        <item>अस्थायी रूप से नौकरी से निकाला / Temporarily Laid Off</item>
+        <item>नौकरी चली गई / Lost Job</item>
+        <item>कोई बदलाव नहीं / No Change</item>
+        <item>अन्य / Other</item>
     </string-array>
 
     <!-- Yes/No Options -->
     <string-array name="yes_no_options">
-        <item>Yes</item>
-        <item>No</item>
+        <item>हाँ / Yes</item>
+        <item>नहीं / No</item>
     </string-array>
 </resources>
-
-

@@ -159,7 +159,7 @@ class FHQSurvey : BaseActivity() {
                     if(list!=null && list.size >0){
                         val rv=binding?.recyclerViewSurvey!!
                         rv.layoutManager= LinearLayoutManager(this@FHQSurvey)
-                        val adapter= SurveyAdapter(list, responses)
+                        val adapter= SurveyAdapter(this@FHQSurvey,list, responses)
                         rv.adapter=adapter
 
                     }
